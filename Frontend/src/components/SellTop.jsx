@@ -7,19 +7,34 @@ const SellTop = ({props}) => {
   const [stock_pulsa_riwayat, setstock_pulsa_riwayat] = useState([])
 
   
-  //menarik table stock pulsa
-  useEffect(() =>{
+  // //menarik table stock pulsa
+  // useEffect(() =>{
+  //   fetch("http://localhost:4080/V1/getSP")
+  //   .then((res) => res.json())
+  //   .then((res) => setstock_pulsa_riwayat(res.getSP[0].stock_pulsa_riwayat))
+  //   }, [setstock_pulsa_riwayat]
+  // )
+
+  useEffect(() => {
     fetch("http://localhost:4080/V1/getSP")
-    .then((res) => res.json())
-    .then((res) => setstock_pulsa_riwayat(res.data[0]))
-    }, [[setstock_pulsa_riwayat]]
+      .then((res) => res.json())
+      .then((res) => setstock_pulsa_riwayat(res.data[0].stock_pulsa_riwayat))
+  }, [setstock_pulsa_riwayat]
   )
 
-  console.log
+  useEffect(() => {
+    fetch("http://localhost:4080/V1/getSP")
+    .then(res => res.json())
+    .then(res => {
+      setstock_pulsa_riwayat(res.data[0].nominal)
+    })
+  })
 
   const updateStock = () => {
     let formdata = new FormData()
     formdata.append("stock_pulsa_riwayat", stock_pulsa_riwayat.nominal_top + Number(nominal_top))
+
+    // e.preventDefault()
     fetch("http://localhost:4080/V1/update/1", {
 
       method:"PUT",
@@ -29,6 +44,7 @@ const SellTop = ({props}) => {
     .then((res) => alert("Berhasil"))
   }
 
+  
 
    // untuk Post Sell
     const postingTop = (e) => {

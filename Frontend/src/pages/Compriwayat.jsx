@@ -5,9 +5,9 @@ import Card from '../components/Card'
 const Compriwayat = () => {
     
         const [datas, setDatas] = useState([])
-        const [rtanggal_riwayat, settanggal_riwayat] = useState('')
-        const [rnominal_riwayat, setnominal_riwayat] = useState('')
-        const [rjenis_transaksi, setjenis_transaksi] = useState('')
+        // const [rtanggal_riwayat, settanggal_riwayat] = useState('')
+        // const [rnominal_riwayat, setnominal_riwayat] = useState('')
+        // const [rjenis_transaksi, setjenis_transaksi] = useState('')
       
     
         // untuk getalldata

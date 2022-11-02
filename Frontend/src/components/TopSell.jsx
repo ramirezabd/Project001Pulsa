@@ -29,8 +29,8 @@ const TopSell = ({props}) => {
       .then(res => alert("Berhasil"))
   }
 
-     // untuk Post Sell
-  const RiwayatSell = (e) => {
+     // untuk Riwayat penjualan
+      const RiwayatSell = (e) => {
       let formData = new FormData()
 
       //nama table mysql,nama state

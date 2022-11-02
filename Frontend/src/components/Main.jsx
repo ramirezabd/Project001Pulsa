@@ -4,7 +4,7 @@ import Card from './Card';
 import Card2 from './Card2';
 import TopSell from './TopSell';
 import SellTop from './SellTop';
-import Compriwayat from '../pages/Compriwayat';
+// import Compriwayat from '../pages/Compriwayat';
 
 function Fetch(){
   // 
@@ -22,7 +22,7 @@ function Fetch(){
     fetch('http://localhost:4080/V1/getSP')
       .then(res => res.json())
       .then(res => PsetDatas(res.data))
-    },
+    }
 
   )
 

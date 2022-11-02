@@ -138,12 +138,15 @@ const postSP = (req, res) => {
 const perbarui = (req, res) => {
   // Inisialisasi variable
   const error = validationResult(req)
+
+  
+  const id = req.params.id
   let results = {
     stok : req.body.stock_pulsa_riwayat
   }
-  const id = req.params.id
 
-  const sql = `UPDATE stokpulsa SET stock_pulsa_riwayat='${results.stok}' where id='${id}'`;
+  const sql = `UPDATE stokpulsa SET stock_pulsa_riwayat='
+    ${results.stok}' where id='${id}'`;
 
 
   if (!error.isEmpty()) {
@@ -153,6 +156,7 @@ const perbarui = (req, res) => {
     throw e
   }
   User(sql, res)
+  console.log("PUT JALAN GA?")
 };
 
 
