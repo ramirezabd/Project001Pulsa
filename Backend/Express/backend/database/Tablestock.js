@@ -1,10 +1,10 @@
 const db = require("./configDB")
 
-const sql = `CREATE TABLE stockpulsa
+const sql = `CREATE TABLE stokpulsa
             (
-            id_sp INT NOT NULL AUTO_INCREMENT,
-            stock_pulsa_riwayat INT(12),
-            PRIMARY KEY (id_sp)
+            id INT NOT NULL AUTO_INCREMENT,
+            stock_pulsa_riwayat VARCHAR(12),
+            PRIMARY KEY (id)
             )`
 
 db.query(sql, (e) =>{

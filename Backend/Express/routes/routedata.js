@@ -1,6 +1,6 @@
 const { Router } = require("express")
 const { body } = require("express-validator")
-const { getR, getT, getS, getSP, postR, postT, postS, postSP, update} = require("../controller/contr")
+const { getR, getT, getS, getSP, postR, postT, postS, postSP, perbarui, search} = require("../controller/contr")
 
 const routes = Router()
 // Abstraksi untuk syarat validasi pada router memerlukan validasi
@@ -46,14 +46,14 @@ const validationS = [
 const validationSP = [
   //syarat validasi
   body("stock_pulsa_riwayat")
-  .isLength({ min: 1, max:12 })
-  .withMessage("stock pulsa tidak boleh kosong"),
+  .isLength({ max:12 })
+  .withMessage("stock_pulsa_riwayat tidak boleh kosong")
 ]
 
 const validationUPD = [
   //syarat validasi
   body("stock_pulsa_riwayat")
-  .isLength({ min: 1, max:12 })
+  .isLength({ max:12 })
   .withMessage("stock pulsa tidak boleh kosong"),
 ]
 
@@ -62,10 +62,10 @@ routes.get("/getR", getR)
 routes.get("/getT", getT)
 routes.get("/getS", getS)
 routes.get("/getSP", getSP)
+routes.get("/getSP/:id", search)
 routes.post("/postR", validationR, postR)
 routes.post("/postT", validationT, postT)
 routes.post("/postS", validationS, postS)
 routes.post("/postSP", validationSP, postSP)
-routes.post("/update", validationSP, update)
-// routes.put("/update/:id", validationSP, update);
+routes.put("/update/:id", validationSP, perbarui)
 module.exports = routes;

@@ -21,7 +21,13 @@ const getS = (req, res) => {
 };
 
 const getSP = (req, res) => {
-  const sql = `SELECT * FROM stockpulsa`;
+  const sql = `SELECT * FROM stokpulsa`;
+  User(sql, res)
+};
+
+const search = (req, res) => {
+  const id = req.params.id
+  const sql = `SELECT * FROM stokpulsa WHERE id='${id}'`;
   User(sql, res)
 };
 ///
@@ -111,7 +117,7 @@ const postSP = (req, res) => {
     stock_pulsa_riwayat: req.body.stock_pulsa_riwayat,
   };
 
-  const sql = `INSERT INTO stockpulsa (stock_pulsa_riwayat)
+  const sql = `INSERT INTO stokpulsa (stock_pulsa_riwayat)
             VALUES ('${results.stock_pulsa_riwayat}')`
 
   // console.log(sql)
@@ -129,15 +135,16 @@ const postSP = (req, res) => {
 
 
 // Fungsi untuk edit data berdasarkan id yang dipilih
-const update = (req, res) => {
+const perbarui = (req, res) => {
   // Inisialisasi variable
   const error = validationResult(req)
   let results = {
-    stock_pulsa_riwayat : req.body.stock_pulsa_riwayat
+    stok : req.body.stock_pulsa_riwayat
   }
+  const id = req.params.id
 
-  const sql = `UPDATE stockpulsa SET stock_pulsa='${results.stock_pulsa_riwayat}' WHERE id_sp='1'`
-  const wtf = `SELECT stockpulsa,  `
+  const sql = `UPDATE stokpulsa SET stock_pulsa_riwayat='${results.stok}' where id='${id}'`;
+
 
   if (!error.isEmpty()) {
     const e = new Error("Invalid value")
@@ -150,4 +157,4 @@ const update = (req, res) => {
 
 
 // Export module / fungsi yang sudah dibuat
-module.exports = { getR, getT, getS, postR, getSP, postT, postS, postSP, update }
+module.exports = { getR, getT, getS, postR, getSP, postT, postS, postSP, perbarui, search }
