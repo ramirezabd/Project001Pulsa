@@ -22,13 +22,6 @@ const SellTop = ({props}) => {
   }, [setstock_pulsa_riwayat]
   )
 
-  useEffect(() => {
-    fetch("http://localhost:4080/V1/getSP")
-    .then(res => res.json())
-    .then(res => {
-      setstock_pulsa_riwayat(res.data[0].nominal)
-    })
-  })
 
   const updateStock = () => {
     let formdata = new FormData()
